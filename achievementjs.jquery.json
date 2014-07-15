@@ -1,0 +1,28 @@
+{
+  "name": "achievementjs",
+  "title": "AchievementJS",
+  "description": "A jQuery plugin to generate Achievements badges.",
+  "version": "0.1",
+  "homepage": "https://alexcheuk@github.com/alexcheuk/AchievementJS.git",
+  "author": {
+    "name": "Alex Cheuk",
+    "url": "https://github.com/alexcheuk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://alexcheuk@github.com/alexcheuk/AchievementJS.git"
+  },
+  "bugs": "",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "keywords": [
+    "jquery-plugin"
+  ]
+}
