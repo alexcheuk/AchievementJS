@@ -1,10 +1,53 @@
 /* line 4, ../scss/jquery.achievement.scss */
 body {
   background: #444;
+  font-family: Arial;
 }
 
-/* line 8, ../scss/jquery.achievement.scss */
-.aicon {
+/* line 9, ../scss/jquery.achievement.scss */
+.achievementjs-container {
+  position: fixed;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  bottom: 40px;
+  webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* line 26, ../scss/jquery.achievement.scss */
+.achievementjs {
+  width: 400px;
+  height: 80px;
+  margin: 0 auto;
+  background: #444;
+  margin-top: 20px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 99;
+  opacity: 0;
+  position: relative;
+  webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+/* line 50, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-icon {
   width: 80px;
   height: 80px;
   background: #555;
@@ -12,14 +55,13 @@ body {
   vertical-align: middle;
   display: table-cell;
 }
-/* line 17, ../scss/jquery.achievement.scss */
-.aicon i {
+/* line 59, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-icon i {
   font-size: 40px;
   color: #ccc;
 }
-
-/* line 23, ../scss/jquery.achievement.scss */
-.atext {
+/* line 65, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-text {
   width: 320px;
   height: 80px;
   vertical-align: middle;
@@ -28,88 +70,32 @@ body {
   color: #fff;
   font-family: Arial;
 }
-/* line 32, ../scss/jquery.achievement.scss */
-.atext h2 {
+/* line 74, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-text h2 {
   text-transform: uppercase;
   margin: 2px 0 0 0;
   margin-bottom: 15px;
   font-size: 14px;
   font-weight: bold;
 }
-/* line 40, ../scss/jquery.achievement.scss */
-.atext p {
+/* line 82, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-text p {
   margin: 0;
   color: #ccc;
   line-height: 14px;
   font-size: 12px;
 }
-
-/* line 48, ../scss/jquery.achievement.scss */
-.achievement {
-  position: fixed;
-  width: 400px;
-  height: 80px;
-  left: 50%;
-  margin-left: -200px;
-  bottom: 40px;
-  background: #444;
-  -webkit-box-shadow: 0 0 25px white;
-  -moz-box-shadow: 0 0 25px white;
-  box-shadow: 0 0 25px white;
-  display: none;
-  z-index: 99;
-  opacity: 0;
-  -webkit-transition: all 2s;
-  -moz-transition: all 2s;
-  -o-transition: all 2s;
-  transition: all 2s;
-}
-/* line 67, ../scss/jquery.achievement.scss */
-.achievement.prestart {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  display: block;
-  -webkit-box-shadow: 0 0 10px white;
-  -moz-box-shadow: 0 0 10px white;
-  box-shadow: 0 0 10px white;
-}
-/* line 74, ../scss/jquery.achievement.scss */
-.achievement.prestart-start {
-  opacity: 1;
-  -webkit-transition: all 0.6s;
-  -moz-transition: all 0.6s;
-  -o-transition: all 0.6s;
-  transition: all 0.6s;
-}
-/* line 80, ../scss/jquery.achievement.scss */
-.achievement.start:after {
-  content: " ";
+/* line 90, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-overlay {
   position: absolute;
+  left: 0;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.8);
-  opacity: 1;
-  -webkit-box-shadow: 0 0 55px white;
-  -moz-box-shadow: 0 0 55px white;
-  box-shadow: 0 0 55px white;
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
+  overflow: hidden;
 }
-/* line 96, ../scss/jquery.achievement.scss */
-.achievement.end:after {
-  opacity: 0;
-}
-/* line 101, ../scss/jquery.achievement.scss */
-.achievement.start-glow .glow {
-  opacity: 0;
-  left: 350px;
-}
-/* line 107, ../scss/jquery.achievement.scss */
-.achievement .glow-wrapper {
+/* line 99, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-glow-wrapper {
   position: absolute;
   left: -3px;
   top: -3px;
@@ -117,8 +103,8 @@ body {
   right: -3px;
   overflow: hidden;
 }
-/* line 117, ../scss/jquery.achievement.scss */
-.achievement .glow {
+/* line 108, ../scss/jquery.achievement.scss */
+.achievementjs .achievementjs-glow {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAABWCAYAAACQJPtmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjIwMzZCRTgwODkxMTFFNEFCNzJEMzE2N0MwOEU2QzYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjIwMzZCRTkwODkxMTFFNEFCNzJEMzE2N0MwOEU2QzYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMjAzNkJFNjA4OTExMUU0QUI3MkQzMTY3QzA4RTZDNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMjAzNkJFNzA4OTExMUU0QUI3MkQzMTY3QzA4RTZDNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuQ+7jQAAASESURBVHja1JvrS1RRFMWPo5ZWVlZERIFFQREUEQURRQ9MexhaZt/614K+RWlqlr2jiAiioKCyKHpAIVFp9lBnprntk3vDYRid68w9a585sNBvZ/zNOWvfve+yKooiE8iqJtWyakhVHvfKkTKkNOlvTSAAUqQ60kJSI2keg/AFYJw0Rhoh/QkFgv0cDaQW0hnQnkOk/aTJVAAA7LGfS1pCOg3ct59PYJQKxAvs8V9D2gXa8xfpqnhCKoBTMIe9oJN/R6w7pGH2hpw2BLt/PZthK2hPWw7Pk35YPwjhOlhDXEA6SFoB2vMp6Rnpt70K8k1ol8VFpGPAfS85pyCnDUEMcSNpG2jPr6RB0k9+WDKaEMQQ7SnoAn6O66RvpAk5BZoQUnwKlpMOgPbMsiGOiSFqQ6hlQ2zj04BYD0lv7GOyGKImBDHExaSjwH0vumVRG4KUxe2kDaA9P5DuclnMFPpWNPoEeUJErSukUXlC1IYgZXE1aTdoT+sBPfllUQuClMUGPgV1oH3tNfhcyBC1INQp9AkX2BDT+YaoAUHK4l7SKtCeL0hP2BCzM5UrpCHaZ4IOhT5hopAhoiHYsjiftJ60A7SnnR8OzGSISAju4OQUVwjEuskN0/hMpwAFQQYny0jNIAC2CpzjPmFaQ0RCqOWyeIQrA2I9Ir0uZogoCO7gpA1oiL3T9QkaEMQQt5I2gQB8It02UxPlbNxvCjE4OWn8vlZz1yBXholihoiAIH3CStIeEAD7h3dzWUzHuQq+IYghdvCVQKz7pI8z9QlICO7g5DDQEAuOz7QgyODEtstNIACvuDTGNkSfEKqcsngceAoux+kTUBDEENeSdoIA2CvQF6dPQEBw+4Qu4y9okb9ukb6wIea0IUifYLMGLcDBSew+AQFByuIhbpgQ6zHppXFesGpCSDmDE+QL1r5SDdEHhGp+KNpM2gICMMxzg1mXRR8Q3PFZJ7BPuGamXrCOl3oKkoQghmiDFvtAANLOE2JJhpg0BHmf0M4/EesB6f1s+wRfELT6hO5S+gRfEKRPsE+H60AA3vJJKMsQk4LgvmA9Ae4TRsspi0lCkD7BdorIIGavMzgxmhCCCGJqQ3D7BLUgpjYEMcRmoxjE1IQQTBBTE0IwQUwtCEEFMbUgBBXE1IIQVBBTA4JWELMn6bJYDgStIOY9M00QEw0hyCAmGkKQQUwkhGCDmGgIQQYxkRCkLNr5ISqI+dzECGKiILiT5HagIQ6YMt8nJAkh6CAmAkLwQUwEhOCDmAgIwQcxfUOoiCCmbwjaQcwMinoqxuBEK4gZaUOomCCmTwgVE8T0BaGigpi+IEifYK9BE+hzDJkSg5g+IGj9w1bJQUwfELSCmP2oPqEYhIoMYiYNQfqEpQYfxPQ+OIkLQcpiq8EHMeFlsRCEig1iJglBK4h5Q6ss5kPQDGJ+Rw1OikGo6CBmUhCquTS2GGwQ8522IeZfhxzYEM9yyzypfQr+PyBFUVTDT4mN/KBUb/wFL7L87Y/wVVD3A4HgXola4zd5EjGIDEv9Ktj1T4ABAJF9ccRWxoIzAAAAAElFTkSuQmCC) no-repeat;
   width: 65px;
   height: 86px;
@@ -126,8 +112,4 @@ body {
   top: 0px;
   left: -65px;
   opacity: 1;
-  -webkit-transition: all 2.5s;
-  -moz-transition: all 2.5s;
-  -o-transition: all 2.5s;
-  transition: all 2.5s;
 }

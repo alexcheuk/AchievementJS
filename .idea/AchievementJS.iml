@@ -5,6 +5,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="AchievementJS node_modules" level="project" />
+    <orderEntry type="library" name="jquery.velocity" level="application" />
   </component>
 </module>
 
